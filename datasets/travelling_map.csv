@@ -1,0 +1,92 @@
+source,destination,travelling_time,travelling_cost
+Escondidos,Santa Paula,6,780
+Escondidos,Campos,5,350
+Escondidos,Riacho de Fevereiro,1,65
+Escondidos,Algas,7,658
+Escondidos,Além-do-Mar,5,535
+Escondidos,Guardião,6,840
+Escondidos,Foz da Água Quente,5,440
+Escondidos,Leão,3,186
+Escondidos,Granada,7,413
+Escondidos,Lagos,5,675
+Escondidos,Ponte-do-Sol,9,504
+Escondidos,Porto,6,624
+Escondidos,Limões,3,261
+Santa Paula,Campos,4,404
+Santa Paula,Riacho de Fevereiro,8,1192
+Santa Paula,Algas,5,370
+Santa Paula,Além-do-Mar,6,780
+Santa Paula,Guardião,9,693
+Santa Paula,Foz da Água Quente,3,390
+Santa Paula,Leão,10,830
+Santa Paula,Granada,4,248
+Santa Paula,Lagos,8,512
+Santa Paula,Ponte-do-Sol,3,390
+Santa Paula,Porto,4,320
+Santa Paula,Limões,10,850
+Campos,Riacho de Fevereiro,6,828
+Campos,Algas,3,369
+Campos,Além-do-Mar,2,118
+Campos,Guardião,8,944
+Campos,Foz da Água Quente,5,610
+Campos,Leão,3,234
+Campos,Granada,2,294
+Campos,Lagos,2,168
+Campos,Ponte-do-Sol,2,252
+Campos,Porto,9,1017
+Campos,Limões,8,1200
+Riacho de Fevereiro,Algas,5,485
+Riacho de Fevereiro,Além-do-Mar,6,360
+Riacho de Fevereiro,Guardião,10,750
+Riacho de Fevereiro,Foz da Água Quente,10,1390
+Riacho de Fevereiro,Leão,4,536
+Riacho de Fevereiro,Granada,8,856
+Riacho de Fevereiro,Lagos,3,201
+Riacho de Fevereiro,Ponte-do-Sol,7,931
+Riacho de Fevereiro,Porto,2,160
+Riacho de Fevereiro,Limões,5,330
+Algas,Além-do-Mar,5,440
+Algas,Guardião,9,936
+Algas,Foz da Água Quente,2,174
+Algas,Leão,5,365
+Algas,Granada,8,1192
+Algas,Lagos,3,435
+Algas,Ponte-do-Sol,5,320
+Algas,Porto,6,546
+Algas,Limões,3,432
+Além-do-Mar,Guardião,7,833
+Além-do-Mar,Foz da Água Quente,2,292
+Além-do-Mar,Leão,1,97
+Além-do-Mar,Granada,6,582
+Além-do-Mar,Lagos,1,147
+Além-do-Mar,Ponte-do-Sol,4,332
+Além-do-Mar,Porto,7,763
+Além-do-Mar,Limões,5,645
+Guardião,Foz da Água Quente,9,981
+Guardião,Leão,1,60
+Guardião,Granada,10,680
+Guardião,Lagos,9,603
+Guardião,Ponte-do-Sol,1,74
+Guardião,Porto,7,455
+Guardião,Limões,8,1088
+Foz da Água Quente,Leão,7,567
+Foz da Água Quente,Granada,7,378
+Foz da Água Quente,Lagos,6,762
+Foz da Água Quente,Ponte-do-Sol,3,408
+Foz da Água Quente,Porto,4,576
+Foz da Água Quente,Limões,1,143
+Leão,Granada,1,122
+Leão,Lagos,1,147
+Leão,Ponte-do-Sol,3,168
+Leão,Porto,10,800
+Leão,Limões,9,846
+Granada,Lagos,2,174
+Granada,Ponte-do-Sol,7,1036
+Granada,Porto,3,237
+Granada,Limões,4,444
+Lagos,Ponte-do-Sol,1,130
+Lagos,Porto,10,800
+Lagos,Limões,8,952
+Ponte-do-Sol,Porto,10,1020
+Ponte-do-Sol,Limões,9,558
+Porto,Limões,9,513
