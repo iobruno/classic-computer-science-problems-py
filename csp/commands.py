@@ -2,8 +2,8 @@ import click
 import matplotlib.pyplot as plt
 import networkx as nx
 
-from app.csp.constraints import ConstraintSatisfactionProblem as CSP
-from app.csp.zookeeper import ZookeeperConstraint
+from csp.constraints import ConstraintSatisfactionProblem as CSP
+from csp.zookeeper import ZookeeperConstraint
 from typing import Dict, Optional
 
 

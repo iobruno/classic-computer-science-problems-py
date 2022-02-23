@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "classic-computer-science-problems-py"
+version = "0.1.0"
+description = "Classic Computer Science Problems in Python + AI Assessments"
+authors = ["iobruno <bruno.ariev@gmail.com>"]
+license = "MIT"
+packages = [
+    { include = "csp" }
+]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+click = "8.0.4"
+matplotlib = "3.5.1"
+networkx = "2.6.3"
+pandas = "1.4.1"
+scipy = "1.8.0"
+scikit-fuzzy = "0.4.2"
+
+[tool.poetry.dev-dependencies]
+jupyterlab = "3.2.9"
+pytest = "7.0.1"
+
+[tool.poetry.scripts]
+cs = "run:cli"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

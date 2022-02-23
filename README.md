@@ -1,21 +1,45 @@
-# Artificial Intelligence 101
+# Classic Computer Science Problems in Python
+
+This project is a collection my resolutions for the various exercises from the book 
+`Classic Computer Science Problems in Python`, plus some more AI assessments from the Academia
 
 ## Tech Stack
-- Python 3.7
-- Conda / Virtualenv
+- Python 3.9+
+- Pytest
+- [Poetry](https://python-poetry.org/docs/)  (packaging and dependecy management)
+- Conda (virtual env)
 
 ## Up & Running
-- Crie um ambiente virtual com `conda` ou `virtualenv` utilizando Python 3.7+
-- Em seguida, a partir da raiz do projeto, execute: 
+
+Pretty all use-cases/problems here are coded on **Jupyter Notebooks**, so make sure to:
+- **Create a virtualenv for Python 3.9**
+- **Install poetry**, and then:
+
+### Setup for Local development
 ```
-pip install -r requirements.txt
+$ make setup
+$ make run_jupyter
+```
+### Build and Install locally:
+```
+$ make install
+$ cs csp zookeeper
 ```
 
-- Por fim, execute o script .py da aplicação que deseja executar, como mostrado abaixo para o caso de CSP
-
-### Constraint Satisfaction Problems (CSP)
-
-#### EP3: Zoo Organization (Organização do Zoológico) 
+> For a list of commands available or simply run (currently the only app that is implemented outside of a jupyter notebook)
 ```
-$ python zookeeper_app.py
-```
+$ cs --help
+``` 
+
+## TO-DO List:
+
+### Chapters
+Ch.3 - Constraint Satisfaction Problems (CSP) 
+- [x] The Australian map-coloring problem
+- [x] EXTRA: The Zookeeper problem
+
+### Project Setup and Pipelines
+- [x] Refactor the CLI apps with click
+- [ ] Set up a template for code formatting (yapf)
+- [x] PEP-517: Packaging and dependency management with Poetry
+- [ ] Implement a CI pipeline with GitHub Actions

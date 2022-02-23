@@ -1,4 +1,4 @@
-from app.csp.constraints import Constraint, V, D
+from csp.constraints import Constraint, V, D
 from typing import Dict
 
 

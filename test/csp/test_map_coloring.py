@@ -1,6 +1,6 @@
 import pytest
-from app.csp.constraints import ConstraintSatisfactionProblem as CSP
-from app.csp.map_coloring import MapColoringConstraint
+from csp.constraints import ConstraintSatisfactionProblem as CSP
+from csp.map_coloring import MapColoringConstraint
 
 
 class TestAustralianMapColoringProblem:

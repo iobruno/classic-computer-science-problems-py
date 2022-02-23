@@ -1,5 +1,5 @@
 import click
-from app.csp.commands import csp
+from csp.commands import csp
 
 @click.group()
 def cli():
