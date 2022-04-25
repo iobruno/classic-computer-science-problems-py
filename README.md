@@ -11,16 +11,36 @@ This project is a collection my resolutions for the various exercises from the b
 
 ## Up & Running
 
-Pretty all use-cases/problems here are coded on **Jupyter Notebooks**, so make sure to:
+Pretty much all use-cases/problems here are coded on **Jupyter Notebooks**, so make sure to:
 - **Create a virtualenv for Python 3.9**
 - **Install poetry**, and then:
 
-### Setup for Local development
+## Build and Run locally:
+
+### **Genetic Algorithm: Multi-Vehicle Routing Problem (mVRP)**
+ 
+**Local run (Without Poetry)**
 ```
-$ make setup
-$ make run_jupyter
+$ pip install -r requirements.txt
+$ python run.py ga mvrp
 ```
-### Build and Install locally:
+
+**Recommended (Poetry required)**
+``` 
+$ make install
+$ cs ga mvrp
+```
+
+
+### **Minimax: Chess**
+
+**Recommended**
+```
+$ make install
+$ cs minimax chess
+```
+
+### **Constraint Satisfaction Problems (CSP) - Zookeeper**
 ```
 $ make install
 $ cs csp zookeeper

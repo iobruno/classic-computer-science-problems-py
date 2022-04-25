@@ -9,13 +9,16 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "~3.9"
+python = "~3.7"
+chess = "1.8.0"
 click = "8.0.4"
 matplotlib = "3.5.1"
 networkx = "2.6.3"
 pandas = "1.4.1"
 scipy = "1.8.0"
 scikit-fuzzy = "0.4.2"
+chess = "1.8.0"
+rich = "^12.4.4"
 
 [tool.poetry.dev-dependencies]
 jupyterlab = "3.2.9"
