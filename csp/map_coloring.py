@@ -3,7 +3,6 @@ from typing import Dict
 
 
 class MapColoringConstraint(Constraint[str, str]):
-
     def __init__(self, place1: str, place2: str) -> None:
         super().__init__([place1, place2])
         self.place1: str = place1

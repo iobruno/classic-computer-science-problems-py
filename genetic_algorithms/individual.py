@@ -6,9 +6,9 @@ from typing import List, TypeVar, Tuple
 from dataclasses import dataclass, field
 
 
-T = TypeVar('T', bound='Individual')
-C = TypeVar('C', bound='Chromosome')
-G = TypeVar('G')
+T = TypeVar("T", bound="Individual")
+C = TypeVar("C", bound="Chromosome")
+G = TypeVar("G")
 
 
 @dataclass
@@ -20,6 +20,7 @@ class Individual(ABC):
     It should contain a set of one or more chromosomes, so long as each
     chromosome solves part of the problem
     """
+
     gen: int
     score: int = field(init=False)
     chromosomes: List[C]
@@ -46,6 +47,7 @@ class Chromosome(ABC):
     Represents a group (or list) of genes, defining the traits of an individual
     For this specific scenario, each Chromosome represets the route of a vehicle
     """
+
     score: int = field(init=False)
     genes: ndarray
 

@@ -7,9 +7,9 @@ from genetic_algorithms.utils import delivery_points, dist_between
 from itertools import tee
 from typing import List, TypeVar, Tuple
 
-T = TypeVar('T', bound='MultiVehicleRoutingProblem')
-C = TypeVar('C', bound='Vehicle')
-G = TypeVar('G')
+T = TypeVar("T", bound="MultiVehicleRoutingProblem")
+C = TypeVar("C", bound="Vehicle")
+G = TypeVar("G")
 
 
 @dataclass
@@ -18,6 +18,7 @@ class Vehicle(Chromosome):
     Each vehicle is represented by a Chromosome in this scenario
     And the set of chromosomes (or Vehicles) defines an Individual
     """
+
     def __init__(self, initial_route):
         super().__init__(genes=initial_route)
         self.route = self._traceroute()
@@ -82,19 +83,21 @@ class MultiVehicleRoutingProblem(Individual):
         second_parent_genes = other.flatten_genes()
 
         """Offsprings"""
-        first_offspring = self._make_offspring_from(first_parent=first_parent_genes,
-                                                    second_parent=second_parent_genes)
+        first_offspring = self._make_offspring_from(
+            first_parent=first_parent_genes, second_parent=second_parent_genes
+        )
 
-        second_offspring = self._make_offspring_from(first_parent=second_parent_genes,
-                                                     second_parent=first_parent_genes)
+        second_offspring = self._make_offspring_from(
+            first_parent=second_parent_genes, second_parent=first_parent_genes
+        )
 
-        first_individual = MultiVehicleRoutingProblem.generate_from(all_delivery_points=first_offspring,
-                                                                    gen=offspring_gen,
-                                                                    with_split=self.no_chromosomes)
+        first_individual = MultiVehicleRoutingProblem.generate_from(
+            all_delivery_points=first_offspring, gen=offspring_gen, with_split=self.no_chromosomes
+        )
 
-        second_individual = MultiVehicleRoutingProblem.generate_from(all_delivery_points=second_offspring,
-                                                                     gen=offspring_gen,
-                                                                     with_split=self.no_chromosomes)
+        second_individual = MultiVehicleRoutingProblem.generate_from(
+            all_delivery_points=second_offspring, gen=offspring_gen, with_split=self.no_chromosomes
+        )
         return first_individual, second_individual
 
     def _make_offspring_from(self, first_parent: ndarray, second_parent: ndarray) -> ndarray:

@@ -9,6 +9,7 @@ class Constraint(Generic[V, D], ABC):
     """
     Abstract Base Class for all constraints
     """
+
     variables: Iterable[V]
 
     def __init__(self, variables: Iterable[V]):
@@ -29,13 +30,13 @@ class ConstraintSatisfactionProblem(Generic[V, D]):
         self.domains = dict()
         self.constraints = dict()
 
-    def add_variable(self, var: V, domain: List[D]) -> 'CSP':
+    def add_variable(self, var: V, domain: List[D]) -> "CSP":
         self.variables.append(var)
         self.domains[var] = domain
         self.constraints[var] = list()
         return self
 
-    def add_constraint(self, constraint: Constraint[V, D]) -> 'CSP':
+    def add_constraint(self, constraint: Constraint[V, D]) -> "CSP":
         for var in constraint.variables:
             if var not in self.variables:
                 raise LookupError(f"Unknown variable {var} specified in constraint")

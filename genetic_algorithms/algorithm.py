@@ -2,20 +2,26 @@ import numpy as np
 from typing import List, TypeVar
 from rich.progress import track
 
-T = TypeVar('T', bound='Individual')
-C = TypeVar('C', bound='Chromosome')
-G = TypeVar('G')
+T = TypeVar("T", bound="Individual")
+C = TypeVar("C", bound="Chromosome")
+G = TypeVar("G")
 
 
 class GeneticAlgorithm:
-
     initial_population: List[T]
     mutation_rate: float
     crossover_rate: float
     tragedy_rate: float
 
-    def __init__(self, initial_population: List, mutation_rate: float, crossover_rate: float,
-                 tragedy_rate: float, tragedy_on_every_nth_generation: int, top_n: int = 1000):
+    def __init__(
+        self,
+        initial_population: List,
+        mutation_rate: float,
+        crossover_rate: float,
+        tragedy_rate: float,
+        tragedy_on_every_nth_generation: int,
+        top_n: int = 1000,
+    ):
         self.initial_population = initial_population
         self.mutation_rate = mutation_rate
         self.crossover_rate = crossover_rate
@@ -52,15 +58,17 @@ class GeneticAlgorithm:
         selected = sorted(population, key=lambda individual: individual.score)
         return selected[0:n]
 
-    def generate_individuals_until(self, generation: int) -> List[T]:
+    def generate_individuals_until(self, gen: int) -> List[T]:
         population = self.initial_population
 
-        for gen in track(range(1, generation+1), description=f"Processing {generation} Generations..."):
+        for gen in track(range(1, gen + 1), description=f"Processing {gen} Generations..."):
             if gen % self.tragedy_on_every_nth_generation == 0:
                 population = self._apply_tragedy(population=population)
             else:
                 mutons = self._generate_mutons(population=population, generation=gen)
                 offsprings = self._generate_offspring(population=population, generation=gen)
-                population = self.select_top_n_from(population=population+mutons+offsprings, n=self.top_n)
+                population = self.select_top_n_from(
+                    population=population + mutons + offsprings, n=self.top_n
+                )
 
         return population

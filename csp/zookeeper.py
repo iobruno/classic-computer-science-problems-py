@@ -3,9 +3,7 @@ from typing import Dict
 
 
 class ZookeeperConstraint:
-
     class Rejects(Constraint[str, str]):
-
         def __init__(self, animal: str, neighbor_animal: str, reason: str = None):
             super().__init__([animal, neighbor_animal])
             self.animal1: str = animal
@@ -26,7 +24,6 @@ class ZookeeperConstraint:
             return assignment[self.animal1] != assignment[self.animal2]
 
     class RejectsSameOrAdjacent(Constraint[str, str]):
-
         def __init__(self, animal: str, another_animal: str, reason: str = None):
             super().__init__([animal, another_animal])
             self.animal1 = animal
@@ -50,7 +47,6 @@ class ZookeeperConstraint:
             return abs(animal1_cage - animal2_cage) > 1
 
     class MustBeTogetherWith(Constraint[str, str]):
-
         def __init__(self, animal: str, neighbor_animal: str, reason: str = None):
             super().__init__([animal, neighbor_animal])
             self.animal1: str = animal
@@ -71,7 +67,6 @@ class ZookeeperConstraint:
             return assignment[self.animal1] == assignment[self.animal2]
 
     class MustBeInCageID(Constraint[str, int]):
-
         def __init__(self, animal: str, cage: int, reason: str = None):
             super().__init__([animal])
             self.animal: str = animal
@@ -85,5 +80,3 @@ class ZookeeperConstraint:
             for this Constraint to be accepted, otherwise Reject
             """
             return assignment[self.animal] == self.cage_number
-
-
