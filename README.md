@@ -1,36 +1,32 @@
 # Classic Computer Science Problems in Python
 
-![Python](https://img.shields.io/badge/Python-3.9%20|%203.10%20|%203.11-3776AB.svg?style=flat&logo=python&logoColor=white)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+![Python](https://img.shields.io/badge/Python-3.12_|_3.11_|_3.10-4B8BBE.svg?style=flat&logo=python&logoColor=FFD43B&labelColor=306998)
+![Pandas](https://img.shields.io/badge/pandas-2.x-E70288?style=flat&logo=pandas&logoColor=white&labelColor=130753)
+![Jupyter](https://img.shields.io/badge/Jupyter-31393F.svg?style=flat&logo=jupyter&logoColor=F37726&labelColor=31393F)
 
-This project is a collection my resolutions for the various exercises from the book 
-`Classic Computer Science Problems in Python`, plus some more AI assessments from the Academia
+![License](https://img.shields.io/badge/license-CC--BY--SA--4.0-31393F?style=flat&logo=creativecommons&logoColor=black&labelColor=white)
 
+This project is a collection my resolutions for the various exercises from the book `Classic Computer Science Problems in Python`, plus some more AI assessments from the Academia
 
 ## Tech Stack
-- pandas, numpy
-- [Click](https://click.palletsprojects.com/en/latest/) 
-- [Rich CLI](https://github.com/Textualize/rich)
-- [PDM](https://pdm-project.org/latest/#installation)
-- [Ruff](https://github.com/astral-sh/ruff)
+- [pandas](https://pandas.pydata.org/docs/user_guide/)
+- [Click](https://click.palletsprojects.com/en/latest/)
+- [Rich](https://github.com/Textualize/rich)
+- [uv](https://docs.astral.sh/uv/concepts/projects/dependencies/)
 
+## Up and Running
 
-## Up & Running
+### Developer Setup
 
-Pretty much all use-cases here are coded on **Jupyter Notebooks**, so make sure to:
-
-**Create a virtualenv for Python 3.9 / 3.10 / 3.11**
+**1.** Install the dependencies on `pyproject.toml`:
 ```shell
-conda create -n classic-cs-problems-py python=3.11
-conda activate classic-cs-problems-py
+uv sync
 ```
 
-**Install project dependencies**
+**2.** Activate the virtualenv created by `uv`:
 ```shell
-pdm sync
+source .venv/bin/activate
 ```
-
-### Running locally:
  
 **Minimax: Chess**
 ```shell
@@ -47,47 +43,17 @@ python run.py ga mvrp
 python run.py csp zookeeper
 ```
 
-
 ## Chapters:
-
-<<<<<<< HEAD
-**Recommended**
-```
-$ make install
-$ cs minimax chess
-```
-
-### **Constraint Satisfaction Problems (CSP) - Zookeeper**
-```
-$ make install
-$ cs csp zookeeper
-```
-
-> For a list of commands available or simply run (currently the only app that is implemented outside of a jupyter notebook)
-```
-$ cs --help
-``` 
-
-## TO-DO List:
-
-### Chapters
-=======
->>>>>>> b3f0fd1 (Feat/project structure update (#2))
 Ch.3 - Constraint Satisfaction Problems (CSP) 
 - [x] The Australian map-coloring problem
 - [x] EXTRA: The Zookeeper problem
 
-<<<<<<< HEAD
-### Project Setup and Pipelines
-=======
 Ch.8 - Adversarial Search
 - [ ] Tic-Tac-Toe
 - [ ] EXTRA: Chess
 
-
 ## TODO
->>>>>>> b3f0fd1 (Feat/project structure update (#2))
-- [x] Refactor the CLI apps with click
-- [x] PEP-517: Packaging and dependency management with PDM
-- [x] Code formatting with Ruff
+- [x] PEP-517: Packaging and dependency management with `uv`
+- [ ] Build a CLI app with `Typer` (`cspy`)
 - [ ] Implement visualization with Streamlit
+- [x] Code format/lint with Ruff
