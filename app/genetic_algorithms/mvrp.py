@@ -1,11 +1,12 @@
-import numpy as np
-from numpy import ndarray, copy
-from random import sample
 from dataclasses import dataclass
-from genetic_algorithms.individual import Chromosome, Individual
-from genetic_algorithms.utils import delivery_points, dist_between
 from itertools import tee
-from typing import List, TypeVar, Tuple
+from random import sample
+from typing import TypeVar
+
+import numpy as np
+
+from app.genetic_algorithms.individual import Chromosome, Individual
+from app.genetic_algorithms.utils import delivery_points, dist_between
 
 T = TypeVar("T", bound="MultiVehicleRoutingProblem")
 C = TypeVar("C", bound="Vehicle")
@@ -28,12 +29,12 @@ class Vehicle(Chromosome):
         overall_distance = [dist_between(start, end) for start, end in self.route]
         return sum(overall_distance)
 
-    def _traceroute(self) -> List[Tuple[G, G]]:
+    def _traceroute(self) -> list[tuple[G, G]]:
         src, dst = tee(self._compute_route())
         next(dst)
         return list(zip(src, dst))
 
-    def _compute_route(self) -> ndarray:
+    def _compute_route(self) -> np.ndarray:
         genes = np.insert(self.genes, 0, 0, axis=0)
         genes = np.append(genes, 0)
         return genes
@@ -55,7 +56,7 @@ class MultiVehicleRoutingProblem(Individual):
         self.no_chromosomes = len(vehicles)
 
     @property
-    def vehicles(self) -> List[C]:
+    def vehicles(self) -> list[C]:
         return self.chromosomes
 
     def fitness(self) -> int:
@@ -64,44 +65,51 @@ class MultiVehicleRoutingProblem(Individual):
 
     def mutate(self, gen: int) -> T:
         slices: int = self.no_chromosomes
-        flattened_genes: ndarray = self.flatten_genes()
+        flattened_genes = self.flatten_genes()
         np.random.shuffle(flattened_genes)
-        vehicle_routes: List[ndarray] = np.array_split(flattened_genes, slices)
+        vehicle_routes: list[np.ndarray] = np.array_split(flattened_genes, slices)
         vehicles = [Vehicle(initial_route=route) for route in vehicle_routes]
         return MultiVehicleRoutingProblem(vehicles=vehicles, gen=gen)
 
-    def cross_over(self, other: T, offspring_gen: int) -> Tuple[T, T]:
+    def cross_over(self, other: T, offspring_gen: int) -> tuple[T, T]:
         """
         Davis’ Order Crossover (OX1)
-        - Create two random crossover points in the parent and copy the segment between them from the
-          first parent to the first offspring.
+        - Create two random crossover points in the parent,
+          and copy the segment between them from the first parent to the first offspring.
 
-        - Now, starting from the second crossover point in the second parent,
-          copy the remaining unused numbers from the second parent to the first child, wrapping around the list.
+        - Starting from the second crossover point in the second parent,
+          copy the remaining unused numbers from the second parent to the first child,
+          wrapping around the list.
         """
         first_parent_genes = self.flatten_genes()
         second_parent_genes = other.flatten_genes()
 
-        """Offsprings"""
         first_offspring = self._make_offspring_from(
-            first_parent=first_parent_genes, second_parent=second_parent_genes
+            first_parent=first_parent_genes,
+            second_parent=second_parent_genes,
         )
-
         second_offspring = self._make_offspring_from(
-            first_parent=second_parent_genes, second_parent=first_parent_genes
+            first_parent=second_parent_genes,
+            second_parent=first_parent_genes,
         )
 
         first_individual = MultiVehicleRoutingProblem.generate_from(
-            all_delivery_points=first_offspring, gen=offspring_gen, with_split=self.no_chromosomes
+            all_delivery_points=first_offspring,
+            gen=offspring_gen,
+            with_split=self.no_chromosomes,
         )
 
         second_individual = MultiVehicleRoutingProblem.generate_from(
-            all_delivery_points=second_offspring, gen=offspring_gen, with_split=self.no_chromosomes
+            all_delivery_points=second_offspring,
+            gen=offspring_gen,
+            with_split=self.no_chromosomes,
         )
         return first_individual, second_individual
 
-    def _make_offspring_from(self, first_parent: ndarray, second_parent: ndarray) -> ndarray:
-        """Cross Over Points (A, B)"""
+    def _make_offspring_from(
+        self, first_parent: np.ndarray, second_parent: np.ndarray
+    ) -> np.ndarray:
+        # Cross Over Points (A, B)
         a, b = sample(range(1, len(first_parent)), 2)
         if a > b:
             a, b = b, a
@@ -110,11 +118,12 @@ class MultiVehicleRoutingProblem(Individual):
         offspring = np.zeros(len(first_parent), dtype=int)
         o1, o2, o3 = np.split(offspring, cross_over_points)
 
-        """Copying the segment between the cross_over points from the first parent to the first offspring."""
+        # Copying the segment between the cross_over points
+        # from the first parent to the first offspring
         for idx in range(len(o2)):
             o2[idx] = first_parent[idx]
 
-        """Fills up first and third segments"""
+        # Fills up first and third segments
         included_nodes = set(o2)
         target = o1
         idx = 0
@@ -133,7 +142,7 @@ class MultiVehicleRoutingProblem(Individual):
         return np.concatenate([o1, o2, o3])
 
     @classmethod
-    def generate_from(cls, all_delivery_points: ndarray, gen: int, with_split) -> T:
+    def generate_from(cls, all_delivery_points: np.ndarray, gen: int, with_split) -> T:
         return cls._split_cargo(all_delivery_points, gen, with_split)
 
     @classmethod
@@ -143,8 +152,8 @@ class MultiVehicleRoutingProblem(Individual):
         return cls._split_cargo(all_delivery_points, gen, with_split)
 
     @classmethod
-    def _split_cargo(cls, all_delivery_points: ndarray, gen: int, with_split) -> T:
-        vehicle_routes: ndarray = np.array_split(all_delivery_points, with_split)
+    def _split_cargo(cls, all_delivery_points: np.ndarray, gen: int, with_split) -> T:
+        vehicle_routes = np.array_split(all_delivery_points, with_split)
         vehicles = [Vehicle(initial_route=route) for route in vehicle_routes]
         individual: MultiVehicleRoutingProblem = cls(vehicles=vehicles, gen=gen)
         return individual

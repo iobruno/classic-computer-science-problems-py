@@ -1,10 +1,8 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import TypeVar
 
 import numpy as np
-from numpy import ndarray
-from typing import List, TypeVar, Tuple
-from dataclasses import dataclass, field
-
 
 T = TypeVar("T", bound="Individual")
 C = TypeVar("C", bound="Chromosome")
@@ -23,21 +21,21 @@ class Individual(ABC):
 
     gen: int
     score: int = field(init=False)
-    chromosomes: List[C]
+    chromosomes: list[C]
 
     @abstractmethod
     def fitness(self) -> float:
-        ...
+        raise NotImplementedError()
 
     @abstractmethod
     def mutate(self, gen: int) -> T:
-        ...
+        raise NotImplementedError()
 
     @abstractmethod
-    def cross_over(self, other: T, offspring_gen: int) -> Tuple[T, T]:
-        ...
+    def cross_over(self, other: T, offspring_gen: int) -> tuple[T, T]:
+        raise NotImplementedError()
 
-    def flatten_genes(self) -> ndarray:
+    def flatten_genes(self) -> np.ndarray:
         return np.concatenate([chromosome.genes for chromosome in self.chromosomes])
 
 
@@ -49,8 +47,8 @@ class Chromosome(ABC):
     """
 
     score: int = field(init=False)
-    genes: ndarray
+    genes: np.ndarray
 
     @abstractmethod
     def fitness(self) -> int:
-        ...
+        raise NotImplementedError()

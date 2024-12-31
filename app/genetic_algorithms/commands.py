@@ -1,9 +1,9 @@
 import click
-from genetic_algorithms.individual import Individual
-from genetic_algorithms.algorithm import GeneticAlgorithm
-from typing import List
-from genetic_algorithms.mvrp import MultiVehicleRoutingProblem as mvrp
 from rich.progress import Console, track
+
+from app.genetic_algorithms.algorithm import GeneticAlgorithm
+from app.genetic_algorithms.individual import Individual
+from app.genetic_algorithms.mvrp import MultiVehicleRoutingProblem as mvrp
 
 console = Console()
 
@@ -26,7 +26,7 @@ def multi_vehicle_roting_problem():
     )
 
     console.print("Cycling through generations, this may take a while...")
-    individuals: List[Individual] = algorithm.generate_individuals_until(gen=5000)
+    individuals: list[Individual] = algorithm.generate_individuals_until(gen=5000)
 
     console.print("All done, preparing to print top N individuals...")
     fmt_print(individuals, n=100)
@@ -39,11 +39,7 @@ def generate_initial_batch_of(n: int, split_between: int):
     ]
 
 
-def fmt_print(individuals: List[Individual], n: int):
+def fmt_print(individuals: list[Individual], n: int):
     console.print(f"Now listing the Top {n} Best Individuals")
     for indv in individuals[0:n]:
         console.print(indv)
-
-
-if __name__ == "__main__":
-    multi_vehicle_roting_problem()

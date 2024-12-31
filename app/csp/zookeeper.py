@@ -1,5 +1,4 @@
-from csp.constraints import Constraint, V, D
-from typing import Dict
+from app.csp.constraints import Constraint
 
 
 class ZookeeperConstraint:
@@ -10,13 +9,11 @@ class ZookeeperConstraint:
             self.animal2: str = neighbor_animal
             self.reason: str = reason
 
-        def is_satisfied_with(self, assignment: Dict[str, int]) -> bool:
+        def is_satisfied_with(self, assignment: dict[str, int]) -> bool:
             """
-            Assignment carries the whole configuration of which animals are assigned to which cage
-            Meaning: if animal2 IS NOT in it, the assignment is free for animal1 to use, and vice-versa
-
-            Otherwise, if both are in it, the constraint is satisfied
-            AS LONG AS animal1 and animal2 are NOT in the same
+            Rules:
+            - If animal2 is not assigned, the cage is available for animal1, and vice versa.
+            - If both are assigned, the constraint is only satisfied if they don't share the cage.
             """
             if self.animal1 not in assignment or self.animal2 not in assignment:
                 return True
@@ -30,15 +27,14 @@ class ZookeeperConstraint:
             self.animal2 = another_animal
             self.reason: str = reason
 
-        def is_satisfied_with(self, assignment: Dict[str, int]) -> bool:
+        def is_satisfied_with(self, assignment: dict[str, int]) -> bool:
             """
-            Assignment carries the whole configuration of which animals are assigned to which cage
-            Meaning: if animal2 IS NOT in it, the assignment is free for animal1 to use, and vice-versa
-
-            Otherwise, if both are in it, the constraint is satisfied:
-            AS LONG AS animal1 and animal2 are NOT in the same or adjacent cages
+            Rules:
+            - If animal2 is not assigned, the cage is available for animal1, and vice versa.
+            - If both are assigned, the constraint is satisfied only if:
+              * they are neither in the same cage,
+              * nor in adjacent cages.
             """
-
             if self.animal1 not in assignment or self.animal2 not in assignment:
                 return True
 
@@ -53,13 +49,12 @@ class ZookeeperConstraint:
             self.animal2: str = neighbor_animal
             self.reason: str = reason
 
-        def is_satisfied_with(self, assignment: Dict[str, str]) -> bool:
+        def is_satisfied_with(self, assignment: dict[str, str]) -> bool:
             """
-            Assignment carries the whole configuration of which animals are assigned to which cage
-            Meaning: if animal2 IS NOT in it, the assignment is free for animal1 to use, and vice-versa
-
-            Otherwise, if both are in it, the constraint is satisfied:
-            AS LONG AS animal1 and animal2 are BOTH in the SAME cage
+            Represents the configuration of animal assignments to cages.
+            Meaning:
+            - If animal2 is not assigned, the cage is available for animal1.
+            - If both are assigned, the constraint is only satisfied they share the same cage
             """
             if self.animal1 not in assignment or self.animal2 not in assignment:
                 return True
@@ -73,10 +68,10 @@ class ZookeeperConstraint:
             self.cage_number: int = cage
             self.reason: str = reason
 
-        def is_satisfied_with(self, assignment: Dict[str, int]) -> bool:
+        def is_satisfied_with(self, assignment: dict[str, int]) -> bool:
             """
-            Assignment carries the whole configuration of which animals are assigned to which cage
-            Meaning: self.animal must have been assigned to specific self.cage
-            for this Constraint to be accepted, otherwise Reject
+            Rules:
+            - The animal must be assigned to the specified cage for the constraint to be satisfied,
+            otherwise, it is rejected.
             """
             return assignment[self.animal] == self.cage_number
