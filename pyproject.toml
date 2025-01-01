@@ -1,13 +1,14 @@
+[build-system]
+requires = [
+    "hatchling>=1.26.3,<2.0",
+]
+build-backend = "hatchling.build"
+
 [project]
 name = "cspy"
-version = "1.0"
+version = "1.1"
 description = "Classic CS Problems in Python"
-license = {text = "CC-BY-SA-4.0"}
 readme = "README.md"
-authors = [
-    {name = "Bruno Oliveira", email = "bruno.ariev@gmail.com"},
-]
-
 requires-python = ">=3.10,<3.13"
 
 dependencies = [
@@ -24,10 +25,31 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "jupyterlab>=4.3.4",
-    "ruff>=0.8.4",
     "pytest>=8.3.4",
+    "pytest-cov>=6.0.0,<7.0",
+    "ruff>=0.8.4",
+    "jupyterlab>=4.3.4",
 ]
+
+[project.scripts]
+cspy = "app.main:cli"
+
+[tool.hatch.build.targets.wheel]
+include = ["app/**"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--cov=app/",
+    "--cov-report=term",
+    "--cov-report=xml",
+]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+omit = ["app/main.py"]
+
+[tool.coverage.report]
+show_missing = true
 
 [tool.ruff]
 line-length = 100

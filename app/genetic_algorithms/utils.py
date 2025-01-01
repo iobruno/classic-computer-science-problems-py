@@ -1,6 +1,5 @@
 import numpy as np
 
-
 delivery_points = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
 
 distance_matrix = np.array(
@@ -26,4 +25,5 @@ distance_matrix = np.array(
 )
 
 
-dist_between = lambda start, end: distance_matrix[start][end]
+def dist_between(start: int, end: int) -> int:
+    return distance_matrix[start][end]

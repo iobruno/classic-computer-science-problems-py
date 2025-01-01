@@ -1,14 +1,4 @@
-import click
-from csp.commands import csp
-from genetic_algorithms.commands import ga
+from app.main import cli
 
-
-@click.group()
-def cli():
-    pass
-
-cli.add_command(csp)
-cli.add_command(ga)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
