@@ -1,19 +1,15 @@
-import click
 from rich.progress import Console, track
+from typer import Typer
 
 from app.genetic_algorithms.algorithm import GeneticAlgorithm
 from app.genetic_algorithms.individual import Individual
 from app.genetic_algorithms.mvrp import MultiVehicleRoutingProblem as mvrp
 
+ga = Typer(no_args_is_help=True, name="ga", help="Genetic Algorithms group")
 console = Console()
 
 
-@click.group()
-def ga():
-    pass
-
-
-@ga.command("mvrp")
+@ga.command("mvrp", help="Multi-Vehicle Routing Problem")
 def multi_vehicle_roting_problem():
     console.print("Generating Initial batch with 10K individuals...")
     initial_batch = generate_initial_batch_of(10000, split_between=4)
