@@ -9,7 +9,7 @@ name = "cspy"
 version = "1.1"
 description = "Classic CS Problems in Python"
 readme = "README.md"
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.10,<3.14"
 
 dependencies = [
     "typer>=0.15.1,<1.0",
