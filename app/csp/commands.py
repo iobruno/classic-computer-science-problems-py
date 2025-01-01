@@ -1,17 +1,14 @@
-import click
 import matplotlib.pyplot as plt
 import networkx as nx
+from typer import Typer
 
 from app.csp.constraints import ConstraintSatisfactionProblem as CSP
 from app.csp.zookeeper import ZookeeperConstraint as Constraint
 
-
-@click.group()
-def csp():
-    pass
+csp = Typer(no_args_is_help=True, name="csp", help="Constraint Satisfaction Problems group")
 
 
-@csp.command("zookeeper")
+@csp.command("zookeeper", help="Zookeeper Problem")
 def zookeeper():
     domain = [1, 2, 3, 4]
     problem = (

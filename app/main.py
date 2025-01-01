@@ -1,13 +1,8 @@
-import click
+from typer import Typer
 
 from app.csp.commands import csp
 from app.genetic_algorithms.commands import ga
 
-
-@click.group()
-def cli():
-    pass
-
-
-cli.add_command(csp)
-cli.add_command(ga)
+cli = Typer(no_args_is_help=True)
+cli.add_typer(csp)
+cli.add_typer(ga)

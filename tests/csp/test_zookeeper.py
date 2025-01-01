@@ -1,4 +1,5 @@
 import pytest
+
 from app.csp.constraints import ConstraintSatisfactionProblem as CSP
 from app.csp.zookeeper import ZookeeperConstraint
 
@@ -35,9 +36,9 @@ def zoo_organization_problem():
 
 def test_valid_zoo_configuration(zoo_organization_problem):
     result = zoo_organization_problem
-    assert result['Lion'] == 1
-    assert result['Meerkat'] == 1
-    assert result['Wild Boar'] == 1
-    assert result['Tiger'] == 2
-    assert result['Peacock'] == 3
-    assert result['Deer'] == 4
+    assert result["Lion"] == 1
+    assert result["Meerkat"] == 1
+    assert result["Wild Boar"] == 1
+    assert result["Tiger"] == 2
+    assert result["Peacock"] == 3
+    assert result["Deer"] == 4
