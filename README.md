@@ -1,30 +1,22 @@
 # Classic Computer Science Problems in Python
 
-![Python](https://img.shields.io/badge/Python-3.13_|_3.12_|_3.11_|_3.10-4B8BBE.svg?style=flat&logo=python&logoColor=FFD43B&labelColor=306998)
-![Pandas](https://img.shields.io/badge/pandas-150458?style=flat&logo=pandas&logoColor=E70488&labelColor=150458)
-![Jupyter](https://img.shields.io/badge/Jupyter-262A38.svg?style=flat&logo=jupyter&logoColor=F37726&labelColor=262A38)
+![Python](https://img.shields.io/badge/Python-3.13_|_3.12-4B8BBE.svg?style=flat&logo=python&logoColor=FFD43B&labelColor=306998)
+[![Typer](https://img.shields.io/badge/Typer-262A38?style=flat&logo=typer&logoColor=FFFFFF&labelColor=262A38)](https://typer.tiangolo.com/tutorial/)
+[![Pandas](https://img.shields.io/badge/pandas-150458?style=flat&logo=pandas&logoColor=E70488&labelColor=150458)](https://pandas.pydata.org/docs/user_guide/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-262A38?style=flat&logo=jupyter&logoColor=FF6849&labelColor=262A38)](https://docs.jupyter.org/en/stable/projects/kernels.html)
+[![uv](https://img.shields.io/badge/astral/uv-261230?style=flat&logo=uv&logoColor=DE5FE9&labelColor=261230)](https://docs.astral.sh/uv/getting-started/installation/)
+
 
 ![License](https://img.shields.io/badge/license-CC--BY--SA--4.0-31393F?style=flat&logo=creativecommons&logoColor=black&labelColor=white)
 
 This project is a collection of various exercises from the book `Classic Computer Science Problems in Python`, plus some more AI assessments from Academia
 
-## Tech Stack
-- [Typer](https://typer.tiangolo.com/tutorial/)
-- [pandas](https://pandas.pydata.org/docs/user_guide/)
-- [uv](https://docs.astral.sh/uv/concepts/projects/dependencies/)
 
-## Up and Running
+## Getting Started
 
-### Developer Setup
-
-**1.** Install the dependencies on `pyproject.toml`:
+Install dependencies from pyproject.toml and activate the created virtualenv:
 ```shell
-uv sync
-```
-
-**2.** Activate the virtualenv created by `uv`:
-```shell
-source .venv/bin/activate
+uv sync && source .venv/bin/activate
 ```
  
 Genetic Algorithm: Multi-Vehicle Routing Problem (mVRP)
@@ -46,7 +38,7 @@ Ch.8 - Adversarial Search
 - [ ] Tic-Tac-Toe
 - [ ] EXTRA: Chess
 
-## TODO
+## TODO's:
 - [x] PEP-517: Packaging and dependency management with `uv`
 - [x] Build a CLI app with `Typer` (`cspy`)
 - [ ] Implement visualization with Streamlit
